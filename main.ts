@@ -1,12 +1,18 @@
-// News-image entry for Wednesday 25 November 2026 (Node 22, stdlib only).
-// The entry image is the entry.png beside this file; the program copies
-// it to /output/entry.png. The image itself is drawn by build_image.py
-// in this repository (a Pillow front page of the day's world news, drawn
-// from the headlines as reported on 25 November 2026).
-// Outside the grader's container, MAKEFUN_OUTPUT_DIR stands in for
-// /output: mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
+// Entry for the make.fun news-image bounty of Wednesday 25 November
+// 2026. Node 22, standard library only.
+//
+// The deliverable is entry.png next to this file; the script copies it
+// into the output directory the grader provides. build_image.py in this
+// repository draws that picture with Pillow: a newspaper front page
+// built from the headlines reported on 25 November 2026.
+//
+// Try it outside the grader with:
+//   python3 build_image.py
+//   mkdir -p out && MAKEFUN_OUTPUT_DIR=out node main.ts
 
-import { copyFileSync } from 'node:fs';
-import { join } from 'node:path';
+import { copyFileSync } from "node:fs";
+import { join } from "node:path";
 
-copyFileSync(new URL('./entry.png', import.meta.url), join(process.env.MAKEFUN_OUTPUT_DIR ?? '/output', 'entry.png'));
+const src = new URL("./entry.png", import.meta.url);
+const dest = join(process.env.MAKEFUN_OUTPUT_DIR ?? "/output", "entry.png");
+copyFileSync(src, dest);
